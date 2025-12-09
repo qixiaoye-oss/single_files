@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/notice/list/index",
+    "pages/notice/detail/index",
+    "pages/training/list/album/index",
+    "pages/training/list/set/index",
+    "pages/training/setting/album/index",
+    "pages/training/setting/set/index",
+    "pages/training/listening/extensive/index",
+    "pages/training/listening/intensive/index",
+    "pages/training/listening/article/index",
+    "pages/training/listening/practice/index",
+    "pages/training/listening/report-card/index",
+    "pages/training/listening/explanation/index",
+    "pages/training/listening/sentence/index",
+    "pages/training/listening/intensive-notes/index",
+    "pages/user/user/user",
+    "pages/user/login/login",
+    "pages/setting/module/index"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTitleText": "不刷语料库",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "pageOrientation": "auto"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "听力",
+        "iconPath": "images/v2/listening_bt.png",
+        "selectedIconPath": "images/v2/listening_active_bt.png"
+      },
+      {
+        "pagePath": "pages/user/user/user",
+        "text": "我",
+        "iconPath": "images/v2/me.png",
+        "selectedIconPath": "images/v2/me_active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "需要麦克风权限以进行录音"
+    }
+  },
+  "resizable": true,
+  "usingComponents": {
+    "tap-action": "/components/tap-action/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "lazyCodeLoading": "requiredComponents"
+}
