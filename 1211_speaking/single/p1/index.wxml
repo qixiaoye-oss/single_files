@@ -1,0 +1,62 @@
+<import src="/templates/loading-progress.wxml"/>
+<template is="loadingProgress" data="{{loading, loadProgress}}"/>
+
+<progess status="{{recorderState}}" time="{{file.duration}}"></progess>
+<question detail="{{detail}}" background="{{detail.colorRgba}}" border-color="{{detail.colorRgb}}"></question>
+<view class="cell layout_flex f_ac f_jb fwb f14 radius9" wx:if="{{file.url}}">
+  <view>{{file.time}}</view>
+  <view class="layout_flex">
+    <view class="audio_duration" style="margin-right: 10px;">{{file.duration}}秒</view>
+    <image class="img20" wx:if="{{audioStatus == 'stop'}}" src="/image/icon/play.png" bind:tap="playAudio"></image>
+    <image class="img20" wx:else src="/image/icon/pause.png" bind:tap="stopAudio"></image>
+  </view>
+</view>
+<view class="single-menu">
+  <view class="single-menu__item">
+    <view class="single-menu__item--text">可公开指的是你的录音可以公开显示在用户回答列表中(后台审核后)，其他用户可以收听你的回答，你可以随时取消公开状态。</view>
+    <view class="single-menu__item--tag">
+      <view class="single__tag--none" wx:if="{{!openFlag}}">匿名</view>
+      <view class="single__tag--open" wx:if="{{openFlag}}">可公开</view>
+    </view>
+    <view>
+      <switch class="switch-open" checked="{{openFlag}}" bindchange="switchChangeOpen" color="rgba(0, 210, 106, 1)"></switch>
+    </view>
+  </view>
+  <view class="single-menu__item">
+    <view class="single-menu__item--text">原创制的的是本答案是自创的，并非参考我们给出的任何一个版本的答案</view>
+    <view class="single-menu__item--tag">
+      <view class="single__tag--original-no" wx:if="{{!originalFlag}}">非原创</view>
+      <view class="single__tag--original" wx:if="{{originalFlag}}">原创</view>
+    </view>
+    <view>
+      <switch class="switch-original" checked="{{originalFlag}}" bindchange="switchChangeOriginal" color="rgba(106, 91, 185)"></switch>
+    </view>
+  </view>
+  <view class="single-menu__bottom"></view>
+</view>
+<view class="btn-page-bottom">
+  <view class="btn-group-layout-inline-center">
+    <btn-action type="quit" bindtap="cancel">
+      <view>放弃</view>
+    </btn-action>
+    <view class="flex1"></view>
+    <block wx:if="{{recorderState === 'stop'}}">
+      <btn-action type="audio" bindtap="gatUserAuthor">
+        <view>点击开始录音</view>
+        <image src="/image/v2/stop.png" class="btn--dis"></image>
+      </btn-action>
+    </block>
+    <block wx:if="{{recorderState === 'play'}}">
+      <btn-action type="audio" bindtap="stopRecoding">
+        <view>点击结束录音</view>
+        <image src="/image/v2/down.png"></image>
+      </btn-action>
+    </block>
+    <block wx:if="{{recorderState === 'over'}}">
+      <btn-action type="audio" bindtap="confirm">
+        <view>点击提交保存</view>
+        <image src="/image/v2/down.png"></image>
+      </btn-action>
+    </block>
+  </view>
+</view>
